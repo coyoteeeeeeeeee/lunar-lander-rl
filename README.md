@@ -9,7 +9,7 @@ Projet d'intelligence artificielle implémentant l'apprentissage par renforcemen
 Ce projet a pour objectif d'entraîner un agent autonome à faire atterrir une fusée entre deux drapeaux sans s'écraser. Il explore non seulement l'optimisation des politiques d'apprentissage via **Stable-Baselines3** et **Gymnasium**, mais aussi l'impact critique de la conception des fonctions de récompense (Reward Shaping et mise en évidence de comportements de triche par Reward Hacking).
 
 - **Aperçu de l'agent en action :**  
-*(Glissez-déposez votre fichier GIF ici une fois généré)*
+![Atterrissage Lunar Lander](landing.gif)
 
 ---
 
