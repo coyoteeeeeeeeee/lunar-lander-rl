@@ -1,23 +1,30 @@
-🚀 Lunar Lander - Reinforcement Learning & Reward Shaping
-Projet d'intelligence artificielle implémentant l'apprentissage par renforcement (Reinforcement Learning) pour résoudre l'environnement Lunar Lander via l'algorithme PPO (Proximal Policy Optimization), avec une exploration avancée du Reward Shaping et du Reward Hacking.
+# 🚀 Lunar Lander - Reinforcement Learning & Reward Shaping
 
-📌 Aperçu du Projet
-Ce projet a pour objectif d'entraîner un agent autonome à faire atterrir une fusée entre deux drapeaux sans s'écraser. Il explore non seulement l'optimisation des politiques d'apprentissage via Stable-Baselines3 et Gymnasium, mais aussi l'impact critique de la conception des fonctions de récompense (Reward Shaping et mise en évidence de comportements de triche par Reward Hacking).
+Projet d'intelligence artificielle implémentant l'apprentissage par renforcement (Reinforcement Learning) pour résoudre l'environnement *Lunar Lander* via l'algorithme **PPO** (Proximal Policy Optimization), avec une exploration avancée du *Reward Shaping* et du *Reward Hacking*.
 
-Aperçu de l'agent en action :
-(Glissez-déposez votre fichier GIF ici une fois généré)
+---
 
-🛠️ Technologies Utilisées
-Langage : Python 3.10+
+## 📌 Aperçu du Projet
 
-Framework RL : Stable-Baselines3 (PPO)
+Ce projet a pour objectif d'entraîner un agent autonome à faire atterrir une fusée entre deux drapeaux sans s'écraser. Il explore non seulement l'optimisation des politiques d'apprentissage via **Stable-Baselines3** et **Gymnasium**, mais aussi l'impact critique de la conception des fonctions de récompense (Reward Shaping et mise en évidence de comportements de triche par Reward Hacking).
 
-Environnement Physique : Gymnasium (box2d)
+* **Aperçu de l'agent en action :**  
+*(Glissez-déposez votre fichier GIF ici une fois généré)*
 
-Bibliothèques annexes : PyTorch, Pygame, NumPy
+---
 
-📂 Structure du Projet
-Plaintext
+## 🛠️ Technologies Utilisées
+
+* **Langage :** Python 3.10+
+* **Framework RL :** Stable-Baselines3 (PPO)
+* **Environnement Physique :** Gymnasium (`box2d`)
+* **Bibliothèques annexes :** PyTorch, Pygame, NumPy
+
+---
+
+## 📂 Structure du Projet
+
+```text
 📦 lunar-lander-rl
 │
 ├── 📄 custom_wrapper.py        # Définition des wrappers personnalisés (Pénalité de temps & Reward Hacking)
@@ -25,11 +32,13 @@ Plaintext
 ├── 📄 train_hacking.py         # Script d'entraînement démontrant le Reward Hacking
 ├── 📄 test.py                  # Script de visualisation et d'évaluation des modèles
 └── 📄 README.md                # Documentation du projet
-⚙️ Implémentation du Reward Shaping (Extraits)
+
+## ⚙️ Implémentation du Reward Shaping (Extraits)
+
 Le projet intègre des surcouches (wrappers) personnalisées pour modifier le comportement de l'agent en temps réel :
 
 1. Pénalité de temps (custom_wrapper.py)
-Python
+
 import gymnasium as gym
 
 class TimePenaltyWrapper(gym.Wrapper):
@@ -42,28 +51,37 @@ class TimePenaltyWrapper(gym.Wrapper):
         observation, reward, terminated, truncated, info = self.env.step(action)
         reward -= self.penalty_amount
         return observation, reward, terminated, truncated, info
-2. Démonstration de Reward Hacking
-En sur-rémunérant la stabilité en vol (+1.0 par frame si la fusée est droite et lente), l'agent apprend à exploiter la faille en faisant du sur-place infini pour accumuler des points au détriment de la mission principale (l'atterrissage).
 
-🚀 Installation et Utilisation en Local
-Cloner le dépôt :
+2. Démonstration de Reward Tracking
 
-Bash
-git clone https://github.com/votre-pseudo/lunar-lander-rl.git
+En sur-rémunérant la stabilité en vol (+1.0 par fame si la fusée est droite et lente), l'agent apprend à exploiter la faille en faisant du sur-place infini pour accumluler des points au détriment de la mission principale (l'atterissage)
+
+## 🚀 Installation et Utilisation en Local
+
+Étape 1 : Cloner le dépôt
+
+git clone [https://github.com/coyoteeeeeeeeee/lunar-lander-rl.git](https://github.com/coyoteeeeeeeeee/lunar-lander-rl.git)
 cd lunar-lander-rl
-Créer et activer un environnement virtuel :
 
-Bash
+Étape 2 : Créer et activer un environnement virtuel
+
+Sur Windows :
+
 python -m venv venv
-# Sur Windows :
 venv\Scripts\activate
-# Sur macOS / Linux :
+
+
+Sur macOS / Linux :
+
+python3 -m venv venv
 source venv/bin/activate
-Installer les dépendances :
 
-Bash
+
+Étape 3 : Installer les dépendances
+
 pip install "gymnasium[box2d]" stable-baselines3
-Lancer la visualisation d'un modèle :
 
-Bash
+
+Étape 4 : Lancer la visualisation d'un modèle
+
 python test.py
